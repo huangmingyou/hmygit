@@ -37,6 +37,7 @@ struct hole_set{
 struct hole_dev {
   char data[200];
   int data_len;
+  struct semaphore sem;
   struct hole_set *vdata;
   struct cdev cdev;
 };
@@ -46,9 +47,11 @@ struct hole_dev *hole_devices;
 ssize_t hole_write(struct file *filp,const char __user *buf,size_t count, loff_t *f_pos){
 
   if(count>199)return 0;
+  if(down_interruptible(&hole_devices->sem))
+    return -ERESTARTSYS;
   copy_from_user(hole_devices->data,buf,count);
-  
   hole_devices->data_len=count;
+  up(&hole_devices->sem);
   return count;
 }
 ssize_t hole_read(struct file *filp,const char __user *buf,size_t count, loff_t *f_pos){
@@ -142,6 +145,7 @@ int hole_init_module(void){
   //初始化设备
 
    for (i=0;i<hole_nr_devs;i++){
+     sema_init(&hole_devices[i].sem,1);
     hole_setup_cdev(&hole_devices[i],i);
   }
 
