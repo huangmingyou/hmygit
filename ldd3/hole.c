@@ -44,6 +44,37 @@ struct hole_dev {
 
 struct hole_dev *hole_devices;
 
+
+#define HOLE_IOC_MAGIC 'h'
+#define HOLE_IOCDSET _IOW(HOLE_IOC_MAGIC,1,int)
+#define HOLE_IOC_MAXNR 3
+
+
+
+/* 分离到头文件*/
+
+long hole_ioctl(struct file *filp,unsigned int cmd,unsigned long arg){
+  int err=0,tmp;
+  int retval=0;
+  if(_IOC_TYPE(cmd)!=HOLE_IOC_MAGIC) return -ENOTTY;
+  if(_IOC_NR(cmd)>HOLE_IOC_MAXNR) return -ENOTTY;
+
+  if(_IOC_DIR(cmd)&_IOC_READ)
+    err = !access_ok(VERIFY_WRITE,(void  __user *)arg,_IOC_SIZE(cmd));
+  else if (_IOC_DIR(cmd)&_IOC_WRITE)
+    err = !access_ok(VERIFY_READ,(void __user*)arg,_IOC_SIZE(cmd));
+  if(err) return -1;
+
+  switch(cmd){
+  case HOLE_IOCDSET:
+    break;
+  default:
+    return -ENOTTY;
+  }
+  return retval;
+}
+
+
 ssize_t hole_write(struct file *filp,const char __user *buf,size_t count, loff_t *f_pos){
 
   if(count>199)return 0;
