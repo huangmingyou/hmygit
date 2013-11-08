@@ -8,8 +8,8 @@
 
 # 定义desktop和page
 SetEnv minDesk 0
-SetEnv maxDesk 2
-DeskTopSize 2x1
+SetEnv maxDesk 1
+DeskTopSize 1x1
 
 
 #定义字体
@@ -22,12 +22,12 @@ ColormapFocus FollowsMouse
 #定义样式
 
 Style *		BorderWidth 4, !Handles, !Title, !Icon
-Style *		ClickToFocus, ClickToFocusPassesClick
+Style *		ClickToFocus, ClickToFocusPassesClick,StartsOnDesk 0
 Style *		SmartPlacement
 Style "Fvwm*"	Sticky, WindowListSkip, CirculateSkipIcon, CirculateSkip
 
 #虚拟机放第1个page
-Style "Virtual*"	StartsOnPage 0 1 0
+Style "Virtual*"	StartsOnDesk 1
 
 # 窗口边框颜色
 Colorset 1 fg black, bg rgb:9e/ee/ee, sh rgb:9e/ee/ee, hi rgb:9e/ee/ee
@@ -185,7 +185,15 @@ Key F5		A	4	Restart fvwm2
 
 
 
-Key F2 A A GotoPage prev
+Key F1 A A GotoDesk 0 0 
+Key F2 A A GotoDesk 0 1
+
+
+Key F2 A 4 MoveToDesk 0 1
+Key F3 A A MoveToDesk 0 1
+Key F1 A 4 MoveToDesk 0 0
+
+
 Key F6 A A exec urxvt
 Key F7 A A exec VBoxManage startvm 15f1337d-7bc5-464c-931f-f06debef264b
 Key F8 A A HmyLMax
@@ -215,4 +223,5 @@ Mouse 4         R       A       GotoDesk -1 $[minDesk] $[maxDesk]
 Mouse 5         R       A       GotoDesk +1 $[minDesk] $[maxDesk]
 
 
-#EdgeCommand Left HmyLMax
+EdgeCommand Right GotoDesk -1 $[minDesk] $[maxDesk]
+#EdgeCommand Left GotoDesk +1 $[minDesk] $[maxDesk]
