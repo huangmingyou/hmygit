@@ -3,33 +3,52 @@
 # hmy (huangmingyou@gmail.com) 根据 difancn@gmail.com 发布在
 # https://code.google.com/p/fvwm-rio/ 的代码修改
 # 2013-11-08
-# beta1
+# 
+#
+#  说明:
+#  
+# 
+#  窗口管理
+#  
+#  F8 把当前窗口停靠到屏幕左边60%大小
+#  F9 把当前窗口停靠到屏幕右边40%大小
+#  F10  当前窗口放到屏幕中间
+#  Alt + 回车  切换当前窗口最大化
+#  Alt + 鼠标左键， 移动窗口
+#  Alt + 鼠标右键,  窗口改变大小
+#  鼠标移动到屏幕右边，在desktop之间切换
+#
+#
+#  desktop 切换
+#
+#  F1 切换到 desktop 1
+#  F2 切换到 desktop 2
+#  Win + F1 移动当前窗口到 desktop  2
+#  Win + F2 移动当前窗口到 desktop  2
+#
+#  F3 显示隐藏窗口列表
+#  win + backspace  隐藏当前窗口
+#
+#
 ###############################################################################
 
-# 定义desktop和page
+
+
+##############################[ 样式 ]####################
 SetEnv minDesk 0
 SetEnv maxDesk 1
 DeskTopSize 1x1
-
-
-#定义字体
 DefaultFont "StringEncoding=utf8:xft:Microsoft YaHei:size=10:encoding=iso10646-1"
 
-#移动窗口的时候不显示位置
 HideGeometryWindow
 ColormapFocus FollowsMouse
 
-#定义样式
 
 Style *		BorderWidth 4, !Handles, !Title, !Icon
-Style *		ClickToFocus, ClickToFocusPassesClick,StartsOnDesk 0
+Style *		ClickToFocus, ClickToFocusPassesClick,StartsOnDesk 0 ,ResizeHintOverride
 Style *		SmartPlacement
 Style "Fvwm*"	Sticky, WindowListSkip, CirculateSkipIcon, CirculateSkip
-
-#虚拟机放第1个page
-Style "Virtual*"	StartsOnDesk 1
-
-# 窗口边框颜色
+#Style "Virtual*"	StartsOnDesk 1
 Colorset 1 fg black, bg rgb:9e/ee/ee, sh rgb:9e/ee/ee, hi rgb:9e/ee/ee
 Colorset 2 fg black, bg rgb:55/aa/aa, sh rgb:55/aa/aa, hi rgb:55/aa/aa
 Style * BorderColorset 1
@@ -40,78 +59,29 @@ Colorset 3 fg black, bg rgb:e9/ff/e9, sh rgb:88/cc/88, hi rgb:88/cc/88
 MenuStyle * MenuColorset 3
 
 
-
-
-
-
-###############################################################################
-# 启动和重启时调用 StartFunction
-DestroyFunc StartFunction
-AddToFunc StartFunction
-+ I Exec exec xsetroot -solid grey30
-#+ I Exec exec urxvt
-# 鼠标移动获取焦点
-#+ I Module FvwmAuto 0 Raise Nop
-
-
-
-###############################################################################
-#定义菜单
+##############################[ 菜单 ]####################
 
 DestroyMenu RootMenu
-AddToMenu RootMenu	"FVWM-Rio"	Title
+AddToMenu RootMenu	"fvwm2"	Title
 +			"&Close"	Close
 +			"&Hide"		Iconify
 +			"&Move"		Move
 +			"&Resize"	Resize
-+			""		  Nop
-+                       "&Programs"     Popup ProgramsMenu
-+                       "&Utilities"    Popup UtilitiesMenu
-+			""		  Nop
-+			"&Exit"		Popup ExitMenu
-
-DestroyMenu ProgramsMenu
-AddToMenu "ProgramsMenu" "Programs"	Title
-+			"&Xterm"	Exec exec urxvt
-+			"&Emacs"	Exec exec google-chrome
-
-DestroyMenu UtilitiesMenu
-AddToMenu UtilitiesMenu	"Utilities"	Title
-+			"&Top"		Exec exec urxvt -T Top -n Top -e top
-+			"Xman"		Exec exec xman
-+			"Xmag"		Exec exec xmag
-+			""		  Nop
-+                       "Reload .Xresource" Exec xrdb -load $HOME/.Xresource
-
-DestroyMenu ExitMenu
-AddToMenu ExitMenu	"Exit"		Title
-+                       "&Restart FVWM-Rio"		Restart fvwm2
++			""		Nop
++                       "&Restart"		Restart fvwm2
 +			"&Logout"			Quit
 
-###############################################################################
-# 自定义的窗口位置函数
 
 
-DestroyFunc HmyMax
-AddToFunc HmyMax
-+ I Move 8 8
-+ I Resize 84 84
+
+##############################[函数]####################
+DestroyFunc StartFunction
+AddToFunc StartFunction
++ I Exec exec xsetroot -solid grey30
++ I Exec exec urxvt
++ I Exec exec xset b off
 
 
-DestroyFunc HmyLMax
-AddToFunc HmyLMax
-+ I Move 0 0
-+ I Resize 85 100
-+ I Move 0 w
-
-#
-#  靠左边停靠
-#
-DestroyFunc HmyRMax
-AddToFunc HmyRMax
-+ I Move 61 0
-+ I Resize 60 100
-+ I Move -0 w
 
 DestroyFunc Move-or-Raise
 AddToFunc Move-or-Raise		M Move
@@ -128,25 +98,16 @@ AddToFunc MoveToCurrentDesk
 + I Iconify off
 + I MoveToDesk 0 $[desk.n]
 
-# 改变默认 WindowListFunc，聚焦新窗口时，鼠标位置保持不变
 DestroyFunc WindowListFunc
 AddToFunc WindowListFunc
 + I Raise
 + I FlipFocus
 
-# 显示 Iconify 窗口列表
 DestroyFunc IconifyWindowList
 AddToFunc   IconifyWindowList
 + I	WindowList Function MoveToCurrentDesk NoNormal NoHotkeys NoGeometry \
 	NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum
 
-# Win + Tab 显示 Iconify 程序列表
-Key Tab		A	4	IconifyWindowList
-
-# Alt + Tab 切换到当前视图的其它程序
-Key Tab		A	M	WindowList Root c c CurrentAtEnd CurrentDesk \
-	NoIcons	NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum \
-	SelectOnRelease Meta_L
 
 DestroyFunc Mouse-1-Root
 AddToFunc Mouse-1-Root
@@ -154,74 +115,62 @@ AddToFunc Mouse-1-Root
 +	D	Menu RootMenu Nop
 +	M	Menu RootMenu Nop
 
-# 鼠标左键作用于根窗口显示主菜单
-Mouse 1	R	A       Mouse-1-Root
-# 鼠标右键点击根窗口显示 Iconify 程序列表
-Mouse 3	R	A	IconifyWindowList
-# 鼠标右键拖动边框调整窗口大小
-#Mouse 3 S	A	Resize-or-Raise
-# 鼠标左键拖动边框移动窗口位置
-#Mouse 1	S	A	Move-or-Raise
 
-# Alt + 鼠标左键拖拽程序窗口内部移动窗口位置（跟 Gnome 环境下的操作类似）
+
+
+#################################[ 鼠标动作 ]##############################################
+
+
+
+Mouse 1	R	A       Mouse-1-Root
+Mouse 3	R	A	IconifyWindowList
 Mouse 1 W	M	Move-or-Raise
-# Alt + 鼠标右键拖拽程序窗口内部调整窗口大小
 Mouse 3 W	M	Resize-or-Raise
 
-# 当主题调整好之后，这个键绑定就不需要了。
-#Key t A 4 FuncFvwmConsole
+
+# 鼠标滚轮作用于桌面即可在视图间切换
+Mouse 4         A       M       GotoDesk -1 $[minDesk] $[maxDesk]
+Mouse 5         A       M       GotoDesk +1 $[minDesk] $[maxDesk]
 
 
+#################################[ 键盘绑定 ]##############################################
+Key Tab		A	4	IconifyWindowList
+Key Tab		A	M	WindowList Root c c CurrentAtEnd CurrentDesk \
+	NoIcons	NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum \
+	SelectOnRelease Meta_L
 
-#### 定义键盘快捷键
-
-Key g 		A 	4 	exec google-chrome
-Key Escape	A	4	Menu RootMenu Nop
-Key BackSpace	A	4	Iconify
-Key F4		A	M	Close
-
-# win + F5 重启 fvwm2 ,便于调试
-Key F5		A	4	Restart fvwm2
-
-
-
+Key v 		A 	4 	exec VBoxManage startvm 15f1337d-7bc5-464c-931f-f06debef264b
 Key F1 A A GotoDesk 0 0 
-Key F2 A A GotoDesk 0 1
-
-
-Key F2 A 4 MoveToDesk 0 1
-Key F3 A A MoveToDesk 0 1
 Key F1 A 4 MoveToDesk 0 0
-
-
+Key F2 A A GotoDesk 0 1
+Key F2 A 4 MoveToDesk 0 1
+Key F3 A 4 IconifyWindowList
+Key F4		A	M	Close
+Key F5		A	4	Restart fvwm2
 Key F6 A A exec urxvt
-Key F7 A A exec VBoxManage startvm 15f1337d-7bc5-464c-931f-f06debef264b
-Key F8 A A HmyLMax
-Key F9 A A HmyRMax
-Key F10 A A HmyMax
+Key F7 A A exec google-chrome
+
+
+Key F8 A A ResizeMove 88 99 0 0
+Key F9 A A ResizeMove  88 99 -0 0
+Key F10 A A ResizeMove 100 99 0 0
+
+Key F8 A M ResizeMove 88 95 0 1 
+Key F9 A M ResizeMove 60 78 -0  8
+Key F10 A M ResizeMove 88 91 6 8
+
 Key F11 A A Menu RootMenu Nop
 Key F12 A A Exec exec slock
 Key Return A M Maximize
+Key BackSpace	A	4	Iconify
 
 
 # 对齐窗口到屏幕
-
 Key Up          W 4 Move w 0
 Key Down        W 4 Move w -0
 Key Left        W 4 Move 0 w
 Key Right       W 4 Move -0 w
 
-
-
-
-# Win + Up/Down 可在视图间切换
-Key k           A       4       GotoDesk -1 $[minDesk] $[maxDesk]
-Key j           A       4       GotoDesk +1 $[minDesk] $[maxDesk]
-
-# 鼠标滚轮作用于桌面即可在视图间切换
-Mouse 4         R       A       GotoDesk -1 $[minDesk] $[maxDesk]
-Mouse 5         R       A       GotoDesk +1 $[minDesk] $[maxDesk]
-
-
-EdgeCommand Right GotoDesk -1 $[minDesk] $[maxDesk]
-#EdgeCommand Left GotoDesk +1 $[minDesk] $[maxDesk]
+#
+# xrandr --output LVDS --mode 1024x768 --pos 0x0 --output VGA --mode 1600x1200 --pos 1024x0
+#
