@@ -22,13 +22,14 @@
 #
 #  F1 切换到 desktop 1
 #  F2 切换到 desktop 2
-#  Win + F1 移动当前窗口到 desktop  2
-#  Win + F2 移动当前窗口到 desktop  2
+#  
+#  
 #
-#  super + tab 显示隐藏窗口列表
+#  win + tab 显示隐藏窗口列表
 #  win + backspace  隐藏当前窗口
 #
 #
+# 
 ###############################################################################
 
 
@@ -43,7 +44,6 @@ HideGeometryWindow
 ColormapFocus FollowsMouse
 
 
-#Style *		BorderWidth 4, !Handles, !Icon,TitleAtLeft
 Style *		BorderWidth 4, !Handles, !Title, !Icon
 Style *		ClickToFocus, ClickToFocusPassesClick,StartsOnDesk 0 ,ResizeHintOverride
 Style *		SmartPlacement
@@ -78,7 +78,6 @@ AddToMenu RootMenu	"fvwm2"	Title
 DestroyFunc StartFunction
 AddToFunc StartFunction
 + I Exec exec xsetroot -solid grey30
-+ I Exec exec urxvt
 + I Exec exec xset b off
 
 
@@ -119,44 +118,42 @@ AddToFunc Mouse-1-Root
 
 
 #################################[ 鼠标动作 ]##############################################
+#  Alt + 鼠标左键， 移动窗口
+#  Alt + 鼠标右键,  窗口改变大小
 Mouse 1 W	M	Move-or-Raise
 Mouse 3 W	M	Resize-or-Raise
-# 鼠标滚轮作用于桌面即可在视图间切换
-Mouse 4         A       M       GotoDesk -1 $[minDesk] $[maxDesk]
-Mouse 5         A       M       GotoDesk +1 $[minDesk] $[maxDesk]
-
-
-
-
 #################################[ 键盘绑定 ]##############################################
+#  win + tab 显示隐藏窗口列表
+#  win + backspace  隐藏当前窗口
 Key Tab		A	4	IconifyWindowList
 Key Tab		A	M	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons	NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L
 
 
+#  F1 切换到 desktop 1
+#  F2 切换到 desktop 2
 Key F1 A A GotoDesk 0 0 
-Key F1 A 4 MoveToDesk 0 0
 Key F2 A A GotoDesk 0 1
-Key F2 A 4 MoveToDesk 0 1
 
 
-
+# Alt + F4 关闭当前活动窗口
 Key F4		A	M	Close
-Key F5		A	4	Restart fvwm2
 
 
-
+#快捷键启动程序
 Key F6 A A exec urxvt
 Key F7 A A exec google-chrome
+Key F12 A A Exec exec slock
+Key v 		A 	4 	exec VBoxManage startvm 15f1337d-7bc5-464c-931f-f06debef264b
 
+#快捷键改变窗口大小
 
 Key F8 A A ResizeMove 88 99 0 0
 Key F9 A A ResizeMove 88 99 -0  0
 Key F10 A A ResizeMove 88 88 8 8
-
-
-
-Key F11 A A Menu RootMenu Nop
-Key F12 A A Exec exec slock
 Key Return A M Maximize
+
+
+# F11 root菜单
+Key F11 A A Menu RootMenu Nop
+# win + 退格 图标化当前窗口
 Key BackSpace	A	4	Iconify
-Key v 		A 	4 	exec VBoxManage startvm 15f1337d-7bc5-464c-931f-f06debef264b
