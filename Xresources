@@ -1,0 +1,72 @@
+
+Emacs.geometry:160x34+110+68
+
+URxvt.foreground: gray
+URxvt.background: black
+Rxvt.colorBD:yellow
+Rxvt.colorUL:green
+URxvt.cursorColor: red3
+URxvt.color0: black
+URxvt.color1: red3
+URxvt.color2:springgreen
+URxvt.color3:wheat3
+URxvt.color4:navy
+URxvt.color5:magenta4
+URxvt.color6: steelblue1
+URxvt.color7:gray85
+URxvt.color8:gray10
+URxvt.color9: orangered2
+URxvt.color10: chartreuse3
+URxvt.color11: lightgoldenrod2
+URxvt.color12: DarkGoldenrod
+Rxvt.saveLines:10000
+Rxvt.geometry: 119x72-0-0
+!
+!
+Rxvt.preeditType: Root
+!URxvt.borderColor: black
+!URxvt.internalBorder: 0
+!URxvt.externalBorder: 0
+URxvt.scrollBar: false
+
+
+
+
+URxvt.font:xft:Terminus-11:style=Regular,xft:WenQuanYi Bitmap Song:style=Regular
+URxvt.boldFont:xft:Terminus-11:style=Regular,xft:WenQuanYi Bitmap Song:style=Regular
+
+
+URxvt.perl-ext:           default,matcher
+URxvt.urlLauncher:        google-chrome
+URxvt.keysym.C-Delete:    perl:matcher
+URxvt.matcher.button:     2
+URxvt.matcher.pattern.1:  \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+URxvt.matcher.pattern.2:  \\B(/\\S+?):(\\d+)(?=:|$)
+URxvt.matcher.launcher.2: vim +$2 $1
+
+
+
+!
+!XWatch*border:          0
+!XWatch*background:      white
+!XWatch*printtime:       0
+!XWatch*newline:         0
+!XWatch*nlines:          500
+!XWatch*interval:        5
+!XWatch*font:            2
+!XWatch*firstwarnings:   0
+!XWatch*printversion:    1
+!XWatch*gag:             last message repeated
+!XWatch*.colorstring:   red:finger connection: | red:FAIL connection: | red:fail connection: | blue:connect from: | magenta:su:
+!
+!
+
+!jURxvt.depth:32
+!URxvt.background:[80]#000000
+!URxvt.perl-ext-common: default,tabbed
+
+!Emacs.font:Microsoft YaHei:style=Regular
+
+
+Clock.hourColor: red
+Clock.foreground: red

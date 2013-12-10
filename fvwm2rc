@@ -3,32 +3,7 @@
 # hmy (huangmingyou@gmail.com) 根据 difancn@gmail.com 发布在
 # https://code.google.com/p/fvwm-rio/ 的代码修改
 # 2013-11-08
-# 
 #
-#  说明:
-#  
-# 
-#  窗口管理
-#  
-#  F8 把当前窗口停靠到屏幕左边90%大小
-#  F9 把当前窗口停靠到屏幕右边90%大小
-#  Alt + 回车  切换当前窗口最大化
-#  Alt + 鼠标左键， 移动窗口
-#  Alt + 鼠标右键,  窗口改变大小
-#
-#
-#  desktop 切换
-#
-#  F1 切换到 desktop 1
-#  F2 切换到 desktop 2
-#  
-#  
-#
-#  win + tab 显示隐藏窗口列表
-#  win + backspace  隐藏当前窗口
-#
-#
-# ver: 2013-11-27@desktop
 
 
 
@@ -46,7 +21,7 @@ Style *		BorderWidth 4, !Handles, !Title, !Icon
 Style *		ClickToFocus, ClickToFocusPassesClick,StartsOnDesk 0 ,ResizeHintOverride
 Style *		SmartPlacement
 Style "Fvwm*"	Sticky, WindowListSkip, CirculateSkipIcon, CirculateSkip
-Style "Virtual*"	StartsOnDesk 1
+Style "Virtual*"	StaysOnBottom, BorderWidth 0
 Colorset 1 fg black, bg rgb:9e/ee/ee, sh rgb:9e/ee/ee, hi rgb:9e/ee/ee
 Colorset 2 fg black, bg rgb:55/aa/aa, sh rgb:55/aa/aa, hi rgb:55/aa/aa
 Style * BorderColorset 1
@@ -65,6 +40,9 @@ DestroyFunc StartFunction
 AddToFunc StartFunction
 + I Exec exec xsetroot -solid grey30
 + I Exec exec xset b off
++ I Exec exec xset s off
++ I Exec exec xset -dpms
++ I Exec exec /usr/local/bin/startkey
 
 
 
@@ -93,66 +71,68 @@ AddToFunc   IconifyWindowList
 + I	WindowList Function MoveToCurrentDesk NoNormal NoHotkeys NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum
 
 
-DestroyFunc Mouse-1-Root
-AddToFunc Mouse-1-Root
-+	C	-
-+	D	Menu RootMenu Nop
-+	M	Menu RootMenu Nop
 
 
+
+#################################[ 菜单 ]##############################################
 
 
 #################################[ 鼠标动作 ]##############################################
 Mouse 1 	W	M	Move-or-Raise
 Mouse 3 	W	M	Resize-or-Raise
-
-# 改变窗口大小
-Mouse 4 W       M       ResizeMove w+5 w w-5 w
-Mouse 5 W       M       ResizeMove w-5 w w+5 w
-Mouse 4 W       4       ResizeMove w w+5 w w-5
-Mouse 5 W       4       ResizeMove w w-5 w w+5
-
-
+Mouse 4 	W	M	Move 1025p 0
+Mouse 5 	W	M	Move -0 -0
 #################################[ 键盘绑定 ]##############################################
 Key F1 		A 	A 	GotoDesk 0 0 
 Key F2 		A 	A 	GotoDesk 0 1
-Key F4		A 	M 	Close
-Key F6		A 	A 	Resize w-5 w-5
-Key F7		A 	A 	Resize w+5 w+5
-Key F8 		A 	A 	ResizeMove 65 99 0 0
-Key F9 		A 	A 	ResizeMove 45 99 -0  0
-Key F10 	A 	A 	ResizeMove 99 99 0 0
-Key F11		A	A	Iconify
+Key F3		W 	A 	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons  NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L 
+#Key F3		W 	A 	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons  NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L  Layer 4
+
+Key F7		A	A	Iconify
+Key F8		A	A	IconifyWindowList
+
+Key F10 	A 	A 	ResizeMove 1024p 810p 0 0-20p
+Key F11 	A 	A 	ResizeMove 99 99 0 0
 Key F12 	A 	A 	Exec exec slock
 
 
-
+Key F4		A 	M 	Close
 
 # 改变窗口大小,移动窗口和改变窗口的layer
-Key t		A	4	Layer 1
-Key b		A	4	Layer 0 4
+Key t		A	4	Layer 0 6
+Key b		A	4	Layer default
+
+Key a 		A 	4       Move 0 w
+Key s 		A 	4       Move w -0
+Key d 		A 	4       Move -0 w
+Key w 		A 	4       Move w 0
+
 Key h 		A 	4       ResizeMove w+5 w w-5 w
 Key j 		A 	4       ResizeMove w w-5 w w+5
 Key k 		A 	4       ResizeMove w w+5 w w-5
 Key l 		A 	4       ResizeMove w-5 w w+5 w
-Key Up		A 	4 	Move w 	w-5
-Key Down	A 	4 	Move w 	w+5
-Key Left	A 	4 	Move w-5 	w
-Key Right	A 	4 	Move w+5	w
+
+
+Key Up		A 	4 	Move w w-5
+Key Down	A 	4 	Move w w+5
+Key Left	A 	4 	Move w-5 w
+Key Right	A 	4 	Move w+5 w
+
 Key Return 	A 	M 	Maximize
-Key Up		A 	M 	Move w 	0
-Key Down	A 	M 	Move w 	-0
-Key Left	A 	M 	Move 0 	w
-Key Right	A 	M 	Move -0	w
 
 # 启动程序的快捷键
 key r		A	4	Restart fvwm2
 key q		A	4	Quit
 Key u 		A	4	exec urxvt
 Key g 		A 	4 	exec google-chrome
-Key v 		A 	4 	exec VBoxManage startvm b5ce7179-20a9-4887-a60f-474c5932dc8e
+Key v           A       4       exec VBoxManage startvm b5ce7179-20a9-4887-a60f-474c5932dc8e
 
 # 其他功能
 Key BackSpace	A	4	Iconify
 Key Tab		A	4	IconifyWindowList
-Key Tab		A	M	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons	NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L
+Key Tab		A	M	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons	NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L Layer 4
+
+#laptop , desktop 上分别设置
+Key 1           A       4       Exec exec xclip ~hmy/.pass/root
+Key 2           A       4       Exec exec xclip ~hmy/.pass/google
+Key 3           A       4       Exec exec xclip ~hmy/.pass/hxb
