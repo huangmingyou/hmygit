@@ -20,7 +20,7 @@ Colorset 2 fg black, bg rgb:55/aa/aa, sh rgb:55/aa/aa, hi rgb:55/aa/aa
 Colorset 3 fg black, bg rgb:e9/ff/e9, sh rgb:88/cc/88, hi rgb:88/cc/88
 
 Style *		BorderWidth 4, !Handles, !Title, !Icon
-Style *		ClickToFocus, ClickToFocusPassesClick,StartsOnDesk 0 ,ResizeHintOverride
+Style *		ClickToFocus, ClickToFocusPassesClick,ResizeHintOverride
 Style *		SmartPlacement
 Style * 	BorderColorset 1
 Style * HilightBorderColorset 2
@@ -72,10 +72,11 @@ Key F2 		A 	A 	GotoDesk 0 1
 Key F7		A	A	Iconify
 Key F8		A	A	IconifyWindowList
 Key F9		W 	A 	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons  NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L 
-Key F11 	A 	A 	ResizeMove 1024p 810p 0 0-20p
+Key F10 	A 	A 	ResizeMove 1024p 810p 0 0-20p
 Key F12 	A 	A 	Exec exec slock
 Key F4		A 	M 	Close
 Key t		A	4	Layer 0 6
+Key r		A	4	Restart fvwm2
 Key b		A	4	Layer default
 Key a 		A 	4       Move 0 w
 Key s 		A 	4       Move w -0
@@ -97,4 +98,10 @@ Key Tab		A	M	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons	NoGeometry NoC
 Key 1           A       4       Exec exec xclip ~hmy/.pass/root
 Key 2           A       4       Exec exec xclip ~hmy/.pass/google
 Key 3           A       4       Exec exec xclip ~hmy/.pass/hxb
-
+#paste
+Key 4           A       4       Exec exec xclip ~hmy/.pass/p4
+Key 5           A       4       Exec exec xclip ~hmy/.pass/p5
+Key 6           A       4       Exec exec xclip ~hmy/.pass/p6
+Key 7           A       4       Exec exec xclip ~hmy/.pass/p7
+Key 8           A       4       Exec exec xclip ~hmy/.pass/p8
+Key 9           A       4       Exec exec xclip ~hmy/.pass/p9
