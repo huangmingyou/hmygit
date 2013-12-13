@@ -69,10 +69,12 @@ Mouse 4 	W	M	Move 1025p 0
 Mouse 5 	W	M	Move -0 -0
 Key F1 		A 	A 	GotoDesk 0 0 
 Key F2 		A 	A 	GotoDesk 0 1
+Key F6		A	A	Exec exec urxvt
 Key F7		A	A	Iconify
 Key F8		A	A	IconifyWindowList
 Key F9		W 	A 	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons  NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L 
 Key F10 	A 	A 	ResizeMove 1024p 810p 0 0-20p
+Key F11		A	A 	FvwmRearrange -tile -u -mn 3 -resize -m  1 1 99 99
 Key F12 	A 	A 	Exec exec slock
 Key F4		A 	M 	Close
 Key t		A	4	Layer 0 6
@@ -105,3 +107,6 @@ Key 6           A       4       Exec exec xclip ~hmy/.pass/p6
 Key 7           A       4       Exec exec xclip ~hmy/.pass/p7
 Key 8           A       4       Exec exec xclip ~hmy/.pass/p8
 Key 9           A       4       Exec exec xclip ~hmy/.pass/p9
+
+
+
