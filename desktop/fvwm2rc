@@ -75,6 +75,7 @@ Key F8		A	A	IconifyWindowList
 Key F9		W 	A 	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons  NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L 
 Key F10 	A 	A 	ResizeMove 1024p 810p 0 0-20p
 Key F11		A	A 	FvwmRearrange -tile -u -mn 3 -resize -m  1 1 99 99
+Key F11		A	M 	FvwmRearrange -cascade -u  -resize -m  1 1 95 95
 Key F12 	A 	A 	Exec exec slock
 Key F4		A 	M 	Close
 Key t		A	4	Layer 0 6
@@ -109,4 +110,6 @@ Key 8           A       4       Exec exec xclip ~hmy/.pass/p8
 Key 9           A       4       Exec exec xclip ~hmy/.pass/p9
 
 
+#Key 1           A       4       Exec exec xrandr --auto
+#Key 2           A       4       Exec exec xrandr --output VGA1 --mode 1920x1080 --pos 1280x0 --output LVDS1 --mode 1280x800 --pos 0x0
 
