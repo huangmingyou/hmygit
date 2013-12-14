@@ -27,6 +27,8 @@ Style * HilightBorderColorset 2
 Style "Fvwm*"	Sticky, WindowListSkip, CirculateSkipIcon, CirculateSkip
 Style "Virtual*"	StaysOnBottom, BorderWidth 0
 
+
+
 MenuStyle * Hilight3DOff, PopupDelayed, PopupDelay 160, SeparatorsLong
 MenuStyle * ActiveFore white, HilightBack rgb:44/88/44
 MenuStyle * MenuColorset 3
@@ -38,6 +40,11 @@ AddToFunc StartFunction
 + I Exec exec xset s off
 + I Exec exec xset -dpms
 + I Exec exec /usr/local/bin/startkey
+
+DestroyFunc JumpExec
+AddToFunc JumpExec
++ I All ($0) WindowListFunc
++ I None ($0) Exec exec $* &
 
 DestroyFunc Move-or-Raise
 AddToFunc Move-or-Raise		M Move
@@ -69,9 +76,10 @@ Mouse 4 	W	M	Move 1025p 0
 Mouse 5 	W	M	Move -0 -0
 Key F1 		A 	A 	GotoDesk 0 0 
 Key F2 		A 	A 	GotoDesk 0 1
-Key F6		A	A	Exec exec urxvt
-Key F7		A	A	Iconify
+Key F6		A	A	JumpExec urxvt
+Key F7		A	A	JumpExec google-chrome
 Key F8		A	A	IconifyWindowList
+Key F8		A	M	Iconify
 Key F9		W 	A 	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons  NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L 
 Key F10 	A 	A 	ResizeMove 1024p 810p 0 0-20p
 Key F11		A	A 	FvwmRearrange -tile -u -mn 3 -resize -m  1 1 99 99
@@ -94,8 +102,8 @@ Key Down	A 	4 	Move w w+5
 Key Left	A 	4 	Move w-5 w
 Key Right	A 	4 	Move w+5 w
 Key Return 	A 	M 	Maximize
-Key u 		A	4	exec urxvt
-Key g 		A 	4 	exec google-chrome
+Key u 		A	M	JumpExec urxvt
+Key g 		A 	M 	JumpExec google-chrome
 Key v           A       4       exec VBoxManage startvm b5ce7179-20a9-4887-a60f-474c5932dc8e
 Key Tab		A	M	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons	NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L Layer 4
 Key 1           A       4       Exec exec xclip ~hmy/.pass/root
