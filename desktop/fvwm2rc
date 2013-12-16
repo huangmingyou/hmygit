@@ -5,6 +5,41 @@
 #
 # author: hmy[huangmingyou@gmail.com]
 
+
+# 特点: 模仿 plan9 的窗口管理器，简单实用
+
+
+# Alt + 鼠标左键移动窗口
+# Alt + 鼠标右键改变窗口大小
+# Alt + 鼠标滚轮向上，移动窗口到屏幕左上
+# Alt + 鼠标滚轮向下，移动窗口到屏幕右下
+
+
+# F1 移动到桌面0
+# F2 移动到桌面1
+# Alt + F4 关闭窗口
+# F6 执行或者聚焦到urxvt
+# F7 执行或者聚焦到google-chrome
+# F8 列出图标化的窗口
+# F9 列出当前桌面的窗口
+# F10 把windows 虚拟机移动到小屏幕
+# F11 平铺窗口
+# Alt+F11 瀑布窗口
+# F12 锁屏幕
+
+
+# Win + t 把当前窗口放到最上层
+# Win + b 把当前窗口放到默认层
+# Win + r 重启 fvwm2
+# Win + a/s/w/d 把窗口贴左下右上放
+# Win + h/j/k/l 按5%的屏幕像素改变窗口大小(四个方向)
+# Win + 方向键  按5%的屏幕像素移动窗口(四个方向)
+# Alt + 回车  切换窗口最大化
+# Alt + u 同F6
+# Alt + g 同F7
+# Alt + tab 切换窗口
+# Win + 数字键 把~/.pass/下对应的文本内容拷贝到粘贴板，随后可以用ctrl+insert 获悉和鼠标中键粘贴（通过xclip)
+
 #################################[ 样式定义 ]##############################################
 SetEnv minDesk 0
 SetEnv maxDesk 1
@@ -74,15 +109,19 @@ Mouse 1 	W	M	Move-or-Raise
 Mouse 3 	W	M	Resize-or-Raise
 Mouse 4 	W	M	Move 1025p 0
 Mouse 5 	W	M	Move -0 -0
+
+
 Key F1 		A 	A 	GotoDesk 0 0 
 Key F2 		A 	A 	GotoDesk 0 1
+
+
 Key F6		A	A	JumpExec urxvt
 Key F7		A	A	JumpExec google-chrome
 Key F8		A	A	IconifyWindowList
-Key F8		A	M	Iconify
+Key i		W	CM	Iconify
 Key F9		W 	A 	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons  NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L 
 Key F10 	A 	A 	ResizeMove 1024p 810p 0 0-20p
-Key F11		A	A 	FvwmRearrange -tile -u -mn 3 -resize -m  1 1 99 99
+Key F11		A	A 	FvwmRearrange -tile -u -mn 2 -resize -m  1 1 99 99
 Key F11		A	M 	FvwmRearrange -cascade -u  -resize -m  1 1 95 95
 Key F12 	A 	A 	Exec exec slock
 Key F4		A 	M 	Close
@@ -108,6 +147,9 @@ Key v           A       4       exec VBoxManage startvm b5ce7179-20a9-4887-a60f-
 Key Tab		A	M	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons	NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L Layer 4
 Key 1           A       4       Exec exec xclip ~hmy/.pass/root
 Key 2           A       4       Exec exec xclip ~hmy/.pass/google
+#扩展屏幕的设置
+#Key 1           A       4       Exec exec xrandr --auto
+#Key 2           A       4       Exec exec xrandr --output VGA1 --mode 1920x1080 --pos 1280x0 --output LVDS1 --mode 1280x800 --pos 0x0
 Key 3           A       4       Exec exec xclip ~hmy/.pass/hxb
 #paste
 Key 4           A       4       Exec exec xclip ~hmy/.pass/p4
@@ -118,6 +160,4 @@ Key 8           A       4       Exec exec xclip ~hmy/.pass/p8
 Key 9           A       4       Exec exec xclip ~hmy/.pass/p9
 
 
-#Key 1           A       4       Exec exec xrandr --auto
-#Key 2           A       4       Exec exec xrandr --output VGA1 --mode 1920x1080 --pos 1280x0 --output LVDS1 --mode 1280x800 --pos 0x0
 
