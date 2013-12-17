@@ -58,15 +58,15 @@ Style *		BorderWidth 4, !Handles, !Title, !Icon
 Style *		ClickToFocus, ClickToFocusPassesClick,ResizeHintOverride
 Style *		SmartPlacement
 Style * 	BorderColorset 1
-Style * HilightBorderColorset 2
-Style "Fvwm*"	Sticky, WindowListSkip, CirculateSkipIcon, CirculateSkip
+Style * 	HilightBorderColorset 2
+Style "Fvwm*"		Sticky, WindowListSkip, CirculateSkipIcon, CirculateSkip
 Style "Virtual*"	StaysOnBottom, BorderWidth 0
 
 
 
-MenuStyle * Hilight3DOff, PopupDelayed, PopupDelay 160, SeparatorsLong
-MenuStyle * ActiveFore white, HilightBack rgb:44/88/44
-MenuStyle * MenuColorset 3
+MenuStyle * 	Hilight3DOff, PopupDelayed, PopupDelay 160, SeparatorsLong
+MenuStyle * 	ActiveFore white, HilightBack rgb:44/88/44
+MenuStyle * 	MenuColorset 3
 #################################[ 函数定义 ]##############################################
 DestroyFunc StartFunction
 AddToFunc StartFunction
@@ -113,45 +113,54 @@ Mouse 5 	W	M	Move -0 -0
 
 Key F1 		A 	A 	GotoDesk 0 0 
 Key F2 		A 	A 	GotoDesk 0 1
-
-
 Key F6		A	A	JumpExec urxvt
 Key F7		A	A	JumpExec google-chrome
 Key F8		A	A	IconifyWindowList
-Key i		W	CM	Iconify
 Key F9		W 	A 	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons  NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L 
 Key F10 	A 	A 	ResizeMove 1024p 810p 0 0-20p
 Key F11		A	A 	FvwmRearrange -tile -u -mn 2 -resize -m  1 1 99 99
 Key F11		A	M 	FvwmRearrange -cascade -u  -resize -m  1 1 95 95
 Key F12 	A 	A 	Exec exec slock
 Key F4		A 	M 	Close
+
+
+
+Key i		W	CM	Iconify
 Key t		A	4	Layer 0 6
 Key r		A	4	Restart fvwm2
 Key b		A	4	Layer default
+Key u 		A	M	JumpExec urxvt
+Key g 		A 	M 	JumpExec google-chrome
+Key v           A       4       exec VBoxManage startvm b5ce7179-20a9-4887-a60f-474c5932dc8e
+
+
+# Win + a/s/w/d 把窗口贴左下右上放
 Key a 		A 	4       Move 0 w
 Key s 		A 	4       Move w -0
 Key d 		A 	4       Move -0 w
 Key w 		A 	4       Move w 0
+# Win + h/j/k/l 按5%的屏幕像素改变窗口大小(四个方向)
 Key h 		A 	4       ResizeMove w+5 w w-5 w
 Key j 		A 	4       ResizeMove w w-5 w w+5
 Key k 		A 	4       ResizeMove w w+5 w w-5
 Key l 		A 	4       ResizeMove w-5 w w+5 w
+# Win + 方向键  按5%的屏幕像素移动窗口(四个方向)
 Key Up		A 	4 	Move w w-5
 Key Down	A 	4 	Move w w+5
 Key Left	A 	4 	Move w-5 w
 Key Right	A 	4 	Move w+5 w
 Key Return 	A 	M 	Maximize
-Key u 		A	M	JumpExec urxvt
-Key g 		A 	M 	JumpExec google-chrome
-Key v           A       4       exec VBoxManage startvm b5ce7179-20a9-4887-a60f-474c5932dc8e
+
 Key Tab		A	M	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons	NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L Layer 4
-Key 1           A       4       Exec exec xclip ~hmy/.pass/root
-Key 2           A       4       Exec exec xclip ~hmy/.pass/google
+
+
+
 #扩展屏幕的设置
 #Key 1           A       4       Exec exec xrandr --auto
 #Key 2           A       4       Exec exec xrandr --output VGA1 --mode 1920x1080 --pos 1280x0 --output LVDS1 --mode 1280x800 --pos 0x0
+Key 1           A       4       Exec exec xclip ~hmy/.pass/root
+Key 2           A       4       Exec exec xclip ~hmy/.pass/google
 Key 3           A       4       Exec exec xclip ~hmy/.pass/hxb
-#paste
 Key 4           A       4       Exec exec xclip ~hmy/.pass/p4
 Key 5           A       4       Exec exec xclip ~hmy/.pass/p5
 Key 6           A       4       Exec exec xclip ~hmy/.pass/p6
