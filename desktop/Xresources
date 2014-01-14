@@ -6,21 +6,35 @@ URxvt.background: black
 Rxvt.colorBD:yellow
 Rxvt.colorUL:green
 URxvt.cursorColor: red3
+
+! 黑色
 URxvt.color0: black
-URxvt.color1: red3
-URxvt.color2:springgreen
-URxvt.color3:wheat3
-URxvt.color4:navy
-URxvt.color5:magenta4
-URxvt.color6: steelblue1
-URxvt.color7:gray85
 URxvt.color8:gray10
+! 红色
+URxvt.color1: red3
 URxvt.color9: orangered2
+! 绿色
+URxvt.color2:springgreen
 URxvt.color10: chartreuse3
+! 黄色
+URxvt.color3:wheat3
 URxvt.color11: lightgoldenrod2
+! 蓝色
+URxvt.color4:#6f99b4
 URxvt.color12: DarkGoldenrod
+! 紫红
+URxvt.color5:magenta4
+URxvt.color13: DarkGoldenrod
+! 蓝绿
+URxvt.color6: steelblue1
+URxvt.color14: steelblue1
+! 白色
+URxvt.color7:gray85
+URxvt.color15:gray85
+
+
 Rxvt.saveLines:10000
-Rxvt.geometry: 119x72-0-0
+Rxvt.geometry: 165x57+1318-54
 !
 !
 Rxvt.preeditType: Root
@@ -46,20 +60,6 @@ URxvt.matcher.launcher.2: vim +$2 $1
 
 
 
-!
-!XWatch*border:          0
-!XWatch*background:      white
-!XWatch*printtime:       0
-!XWatch*newline:         0
-!XWatch*nlines:          500
-!XWatch*interval:        5
-!XWatch*font:            2
-!XWatch*firstwarnings:   0
-!XWatch*printversion:    1
-!XWatch*gag:             last message repeated
-!XWatch*.colorstring:   red:finger connection: | red:FAIL connection: | red:fail connection: | blue:connect from: | magenta:su:
-!
-!
 
 !jURxvt.depth:32
 !URxvt.background:[80]#000000
