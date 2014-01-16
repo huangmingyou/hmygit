@@ -120,7 +120,7 @@ Mouse 1 	R       A       Mouse-1-Root
 
 Key F1		A	A	JumpExec urxvt
 Key F2		A	A	JumpExec google-chrome
-Key F3		A	A 	FvwmRearrange -cascade -incx 3  -incy 3 -u  -resize -m  3 3 85 90
+Key F3		A	A 	FvwmRearrange -cascade -incx 10p  -incy 10p -u  -resize -m  3 3 85 90
 Key F4		A	A 	FvwmRearrange -tile -u -mn 2 -resize -m  1 1 99 99
 
 
