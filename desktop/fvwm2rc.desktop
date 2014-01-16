@@ -63,7 +63,7 @@ MenuStyle * 	MenuColorset 3
 
 DestroyMenu RootMenu
 AddToMenu RootMenu      "root menu"      Title
-+                       "www"         JumpExec chromium
++                       "www"         JumpExec google-chrome
 +                       "urxvt"         JumpExec urxvt
 +                       "evince"         JumpExec evince
 +                       ""         Nop
@@ -83,7 +83,6 @@ AddToFunc StartFunction
 + I Exec exec xset b off
 + I Exec exec xset s off
 + I Exec exec xset -dpms
-+ I Exec exec /usr/local/bin/startkey
 
 DestroyFunc JumpExec
 AddToFunc JumpExec
@@ -119,22 +118,29 @@ Mouse 3 	W	M	Resize-or-Raise
 Mouse 1 	R       A       Mouse-1-Root
 
 
-Key F1 		A 	A 	GotoDesk 0 0 
-Key F2 		A 	A 	GotoDesk 0 1
-Key F4		W	A	Iconify
-Key F6		A	A	JumpExec urxvt
-Key F7		A	A	JumpExec chromium
+Key F1		A	A	JumpExec urxvt
+Key F2		A	A	JumpExec google-chrome
+Key F3		A	A 	FvwmRearrange -cascade -incx 3  -incy 3 -u  -resize -m  3 3 85 90
+Key F4		A	A 	FvwmRearrange -tile -u -mn 2 -resize -m  1 1 99 99
+
+
+Key F6 		A 	A 	GotoDesk 0 0 
+Key F7 		A 	A 	GotoDesk 0 1
 Key F8		A	A	IconifyWindowList
+
+
 Key F9		W 	A 	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons  NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L 
 Key F10 	A 	A 	ResizeMove 1024p 810p 0 0-22p
-Key F11		A	A 	FvwmRearrange -cascade -incx 3  -incy 3 -u  -resize -m  3 3 85 90
-Key F11		A	M 	FvwmRearrange -tile -u -mn 2 -resize -m  1 1 99 99
+Key F11		W	A	Iconify
 Key F12 	A 	A 	Exec exec slock
+
+
 Key F4		A 	M 	Close
 
 
 
 Key r		A	4	Restart fvwm2
+key p		A	M       JumpExec evince
 Key v           A       M       exec VBoxManage startvm b5ce7179-20a9-4887-a60f-474c5932dc8e
 
 # Win + h/j/k/l 按5%的屏幕像素改变窗口大小(四个方向)
