@@ -1,0 +1,46 @@
+\documentclass[12pt,a4paper]{report}
+%设置页面
+\usepackage[top=1in,bottom=1in,left=1.25in,right=1.25in]{geometry}
+\usepackage{graphicx}
+\usepackage[pagestyles,indentafter]{titlesec}
+\usepackage{fontspec,xunicode,xltxtra}
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+\titleformat{\section}{\Large}{\thesection}{1em}{}
+\titleformat{\chapter}[hang]{\centering\LARGE\bfseries}{\chaptername}{1em}{}
+%定义字体
+\newfontfamily\codefont{Droid Sans Mono}
+\newfontfamily\kai{方正北魏楷书繁体}
+\newfontfamily\msyh{微软雅黑}
+\newfontfamily\fsong{方正准雅宋简}
+\newfontfamily\song{方正准雅宋简}
+\newfontfamily\hei{微软雅黑}
+\newfontfamily\fzsk{方正宋刻本秀楷简体}
+%%%%%
+
+
+
+
+
+\renewcommand{\chaptername}{\thechapter.}
+\begin{document}
+
+
+
+\fzsk
+\title{\msyh report}
+\author{huangmingyou@gmail.com}
+
+\maketitle
+\renewcommand{\contentsname}{目录}
+%\tableofcontents
+
+
+%\input{content.tex}
+\begin{abstract}
+abstract
+\end{abstract}
+\chapter{\msyh chapter}
+\section{\msyh section}
+\subsection{\msyh subsection}
+\end{document}
