@@ -118,7 +118,7 @@ Mouse 1 	R       A       Mouse-1-Root
 
 Key F1		A	A	JumpExec urxvt
 Key F2		A	A	JumpExec google-chrome
-Key F3		A	A 	FvwmRearrange -cascade -incx 10p  -incy 10p -u  -resize -m  3 3 85 90
+Key F3		A	A 	FvwmRearrange -cascade -incx -4p  -incy -4p -u  -resize -m  5 5 90 90
 Key F4		A	A 	FvwmRearrange -tile -u -mn 2 -resize -m  1 1 99 99
 
 
@@ -138,7 +138,7 @@ Key F4		A 	M 	Close
 
 
 Key r		A	4	Restart fvwm2
-key p		A	M       JumpExec evince
+#key p		A	M       JumpExec evince
 Key v           A       M       exec VBoxManage startvm b5ce7179-20a9-4887-a60f-474c5932dc8e
 
 # Win + h/j/k/l 按5%的屏幕像素改变窗口大小(四个方向)
