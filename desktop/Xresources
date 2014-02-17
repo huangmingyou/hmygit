@@ -1,5 +1,4 @@
-
-Emacs.geometry:160x34+110+68
+Emacs.geometry: 212x51-88-46
 
 URxvt.foreground: gray
 URxvt.background: black
