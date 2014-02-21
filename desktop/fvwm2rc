@@ -160,6 +160,7 @@ Key F4		A	A 	FvwmRearrange -tile -u -mn 2 -resize -m  1 1 99 99
 
 Key F6 		A 	A 	HmyGeo
 Key F7 		A 	A 	GotoDesk 0 1
+Key F7 		A 	M 	GotoDesk 0 0
 Key F8		A	A	IconifyWindowList
 
 
