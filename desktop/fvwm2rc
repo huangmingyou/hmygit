@@ -50,7 +50,8 @@ Style *		SmartPlacement
 Style * 	BorderColorset 1
 Style * 	HilightBorderColorset 2
 Style "Fvwm*"		Sticky, WindowListSkip, CirculateSkipIcon, CirculateSkip
-Style "Virtual*"	StaysOnBottom, BorderWidth 0
+#Style "Virtual*"	StaysOnBottom, BorderWidth 0
+Style "Virtual*"	 BorderWidth 0
 
 
 
@@ -88,7 +89,6 @@ AddToFunc StartFunction
 + I JumpExec urxvt
 + I JumpExec google-chrome
 + I JumpExec emacs
-+ I Schedule 1000 FvwmRearrange -cascade -incx -4p  -incy -4p -u  -resize -m  5 5   90 90
 
 # 控制所有窗口的位置和大小
 DestroyFunc Geovm
