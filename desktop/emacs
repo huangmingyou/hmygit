@@ -11,3 +11,5 @@
 (setq org-todo-keywords
       '((sequence "TODO" "DOING" "HANGUP" "|" "DONE" "CANCEL")))
 
+
+(global-set-key "\C-ca" 'org-agenda)
