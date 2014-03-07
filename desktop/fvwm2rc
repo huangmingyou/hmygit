@@ -2,7 +2,7 @@
 # fvwm2 仿 plan9 rio 
 # 根据 difancn@gmail.com 发布在https://code.google.com/p/fvwm-rio/ 的代码修改
 #
-#
+# 本配置文件的更新位置: http://github.com/huangmingyou/hmygit/desktop/fvwm2rc
 # author: hmy[huangmingyou@gmail.com]
 
 
@@ -16,13 +16,16 @@
 # F3 瀑布流排列窗口
 # F4 平铺窗口
 # Alt + F4 关闭窗口
-# F6 跳到窗口0
+# F6 重排urxvt,chrome窗口
 # F7 跳到窗口1
+# Alt + F7 跳到窗口0
 # F8 列出图标化的窗口
 # F9 列出当前桌面的窗口
 # F10 把windows 虚拟机移动到小屏幕
 # F11 隐藏窗口
 # F12 锁屏幕
+# Win + t 窗口置顶
+# Win + b 窗口放到默认层
 # Win + r 重启 fvwm2
 # Win + h/j/k/l 按3%的屏幕像素改变窗口大小(四个方向)
 # Win + 方向键  按3%的屏幕像素移动窗口(四个方向)
@@ -88,7 +91,7 @@ AddToFunc StartFunction
 + I Exec exec xset -dpms
 + I JumpExec urxvt
 + I JumpExec google-chrome
-+ I JumpExec emacs
+#+ I JumpExec emacs
 
 # 控制所有窗口的位置和大小
 DestroyFunc Geovm
@@ -173,6 +176,8 @@ Key F12 	A 	A 	Exec exec slock
 Key F4		A 	M 	Close
 
 
+Key t		A	4	Layer 0 8
+Key b		A	4	Layer 0 4
 
 Key r		A	4	Restart fvwm2
 key e		A	M       JumpExec emacs
