@@ -1,35 +1,7 @@
-###############################################################################
+###########################################################################################
 # fvwm2 仿 plan9 rio 
 # 根据 difancn@gmail.com 发布在https://code.google.com/p/fvwm-rio/ 的代码修改
-#
-#
 # author: hmy[huangmingyou@gmail.com]
-
-
-# 特点: 模仿 plan9 的窗口管理器，简单实用
-
-
-# Alt + 鼠标左键移动窗口
-# Alt + 鼠标右键改变窗口大小
-# F1 执行 urxvt
-# F2 执行 chrome
-# F3 瀑布流排列窗口
-# F4 平铺窗口
-# Alt + F4 关闭窗口
-# F6 跳到窗口0
-# F7 跳到窗口1
-# F8 列出图标化的窗口
-# F9 列出当前桌面的窗口
-# F10 把windows 虚拟机移动到小屏幕
-# F11 隐藏窗口
-# F12 锁屏幕
-# Win + r 重启 fvwm2
-# Win + h/j/k/l 按3%的屏幕像素改变窗口大小(四个方向)
-# Win + 方向键  按3%的屏幕像素移动窗口(四个方向)
-# Alt + 回车  切换窗口最大化
-# Alt + tab 切换窗口
-# Win + 数字键 把~/.pass/下对应的文本内容拷贝到粘贴板，随后可以用ctrl+insert 获悉和鼠标中键粘贴（通过xclip)
-
 #################################[ 样式定义 ]##############################################
 SetEnv minDesk 0
 SetEnv maxDesk 1
@@ -69,9 +41,6 @@ AddToMenu RootMenu      "root menu"      Title
 +                       ""         Nop
 +                       "close window"        Close
 +                       "hide window"         Iconify
-+                       "F3 window"       FvwmRearrange -cascade -incx -4p  -incy -4p -u  -resize -m  5 5   90 90
-+                       "F4 window"       FvwmRearrange -tile -u -mn 2 -resize -m  1 1 99 99
-+                       "urxvt and chrome split window"      HmyGeo 
 +                       ""         Nop
 +                       "restart fvwm"         Restart 
 +                       "quit fvwm"         Quit
@@ -86,36 +55,8 @@ AddToFunc StartFunction
 + I Exec exec xset b off
 + I Exec exec xset s off
 + I Exec exec xset -dpms
-+ I JumpExec urxvt
-+ I JumpExec emacs
-#+ I JumpExec google-chrome
++ I Exec exec urxvt
 
-# 控制所有窗口的位置和大小
-DestroyFunc Geovm
-AddToFunc Geovm
-+ I Raise
-+ I FlipFocus
-+ I ResizeMove 1024p 810p 0 0-22p
-
-DestroyFunc Geourxvt
-AddToFunc Geourxvt
-+ I Raise
-+ I FlipFocus
-+ I ResizeMove 1350p 96 -0-20p 2
-DestroyFunc Geochrome
-AddToFunc Geochrome
-+ I Raise
-+ I FlipFocus
-+ I ResizeMove 1600p 96 1044p 2
-DestroyFunc HmyGeo
-AddToFunc HmyGeo
-+ I All (urxvt) Geourxvt
-+ I All (google-chrome) Geochrome
-
-DestroyFunc PlayVm
-AddToFunc PlayVm
-+ I All (Qt-subapplication) Geovm
-# 控制所有窗口的位置和大小
 
 DestroyFunc JumpExec
 AddToFunc JumpExec
@@ -149,63 +90,34 @@ AddToFunc   IconifyWindowList
 Mouse 1 	W	M	Move-or-Raise
 Mouse 3 	W	M	Resize-or-Raise
 Mouse 1 	R       A       Mouse-1-Root
-
-
 Key F1		A	A	JumpExec urxvt
-Key F2		A	A	JumpExec emacs
-#Key F2		A	A	JumpExec google-chrome
 Key F3		A	A 	FvwmRearrange -cascade -incx -4p  -incy -4p -u  -resize -m  5 5   90 90
 Key F4		A	A 	FvwmRearrange -tile -u -mn 2 -resize -m  1 1 99 99
-
-
-Key F6 		A 	A 	HmyGeo
+Key F4		A 	M 	Close
 Key F7 		A 	A 	GotoDesk 0 1
-Key F7 		A 	M 	GotoDesk 0 0
+Key F6 		A 	A 	GotoDesk 0 0
 Key F8		A	A	IconifyWindowList
-
-
 Key F9		W 	A 	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons  NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L 
 Key F10 	A 	A 	PlayVm
 Key F11		W	A	Iconify
 Key F12 	A 	A 	Exec exec slock
-
-
-Key F4		A 	M 	Close
-
-
 Key t		A	4	Layer 0 8
 Key b		A	4	Layer 0 4
-
 Key r		A	4	Restart fvwm2
 key e		A	M       JumpExec emacs
 key g		A	M       JumpExec google-chrome
 key u		A	M       JumpExec urxvt
 Key v           A       M       exec VBoxManage startvm ba2090c6-a8c8-4660-9c77-fc1f409d5c20
-
-# Win + h/j/k/l 按5%的屏幕像素改变窗口大小(四个方向)
 Key h 		A 	4       ResizeMove w+3 w w-3 w
 Key j 		A 	4       ResizeMove w w-3 w w+3
 Key k 		A 	4       ResizeMove w w+3 w w-3
 Key l 		A 	4       ResizeMove w-3 w w+3 w
-# Win + 方向键  按5%的屏幕像素移动窗口(四个方向)
-#Key Up		A 	4 	Move w w-3
-#Key Down	A 	4 	Move w w+3
-#Key Left	A 	4 	Move w-3 w
-#Key Right	A 	4 	Move w+3 w
-
-Key Up		A 	4 	ResizeMove 1910p 600p 0+1024p 0
-Key Down	A 	4 	ResizeMove 1910p 600p 0+1024p -0
-Key Left	A 	4 	ResizeMove 1000p 1072p 0+1024p 0
-Key Right	A 	4 	ResizeMove 1000p 1072p -0 0
-
+Key Up		A 	4 	Move w w-3
+Key Down	A 	4 	Move w w+3
+Key Left	A 	4 	Move w-3 w
+Key Right	A 	4 	Move w+3 w
 Key Return 	A 	M 	Maximize
 Key Tab		A	M	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons	NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L Layer 4
-
-
-
-#扩展屏幕的设置
-#Key 1           A       4       Exec exec xrandr --auto
-#Key 2           A       4       Exec exec xrandr --output VGA1 --mode 1920x1080 --pos 1280x0 --output LVDS1 --mode 1280x800 --pos 0x0
 Key 1           A       4       Exec exec xclip ~hmy/.pass/root
 Key 2           A       4       Exec exec xclip ~hmy/.pass/google
 Key 3           A       4       Exec exec xclip ~hmy/.pass/p3
