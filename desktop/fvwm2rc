@@ -87,8 +87,8 @@ AddToFunc StartFunction
 + I Exec exec xset s off
 + I Exec exec xset -dpms
 + I JumpExec urxvt
-+ I JumpExec google-chrome
-#+ I JumpExec emacs
++ I JumpExec emacs
+#+ I JumpExec google-chrome
 
 # 控制所有窗口的位置和大小
 DestroyFunc Geovm
@@ -101,7 +101,7 @@ DestroyFunc Geourxvt
 AddToFunc Geourxvt
 + I Raise
 + I FlipFocus
-+ I ResizeMove 1600p 96 -0-20p 2
++ I ResizeMove 1350p 96 -0-20p 2
 DestroyFunc Geochrome
 AddToFunc Geochrome
 + I Raise
@@ -152,7 +152,7 @@ Mouse 1 	R       A       Mouse-1-Root
 
 
 Key F1		A	A	JumpExec urxvt
-Key F2		A	A	JumpExec google-chrome
+Key F2		A	A	JumpExec emacs
 #Key F2		A	A	JumpExec google-chrome
 Key F3		A	A 	FvwmRearrange -cascade -incx -4p  -incy -4p -u  -resize -m  5 5   90 90
 Key F4		A	A 	FvwmRearrange -tile -u -mn 2 -resize -m  1 1 99 99
@@ -180,7 +180,7 @@ Key r		A	4	Restart fvwm2
 key e		A	M       JumpExec emacs
 key g		A	M       JumpExec google-chrome
 key u		A	M       JumpExec urxvt
-Key v           A       M       exec VBoxManage startvm b5ce7179-20a9-4887-a60f-474c5932dc8e
+Key v           A       M       exec VBoxManage startvm ba2090c6-a8c8-4660-9c77-fc1f409d5c20
 
 # Win + h/j/k/l 按5%的屏幕像素改变窗口大小(四个方向)
 Key h 		A 	4       ResizeMove w+3 w w-3 w
@@ -188,10 +188,16 @@ Key j 		A 	4       ResizeMove w w-3 w w+3
 Key k 		A 	4       ResizeMove w w+3 w w-3
 Key l 		A 	4       ResizeMove w-3 w w+3 w
 # Win + 方向键  按5%的屏幕像素移动窗口(四个方向)
-Key Up		A 	4 	Move w w-3
-Key Down	A 	4 	Move w w+3
-Key Left	A 	4 	Move w-3 w
-Key Right	A 	4 	Move w+3 w
+#Key Up		A 	4 	Move w w-3
+#Key Down	A 	4 	Move w w+3
+#Key Left	A 	4 	Move w-3 w
+#Key Right	A 	4 	Move w+3 w
+
+Key Up		A 	4 	ResizeMove 1910p 600p 0+1024p 0
+Key Down	A 	4 	ResizeMove 1910p 600p 0+1024p -0
+Key Left	A 	4 	ResizeMove 1000p 1072p 0+1024p 0
+Key Right	A 	4 	ResizeMove 1000p 1072p -0 0
+
 Key Return 	A 	M 	Maximize
 Key Tab		A	M	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons	NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L Layer 4
 
