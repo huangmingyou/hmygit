@@ -45,6 +45,20 @@ AddToMenu RootMenu      "root menu"      Title
 +                       "restart fvwm"         Restart 
 +                       "quit fvwm"         Quit
 
+
+
+DestroyFunc Geovm
+AddToFunc Geovm
++ I Raise
++ I FlipFocus
++ I ResizeMove 1024p 810p 0 0-22p         
+
+
+
+DestroyFunc PlayVm
+AddToFunc PlayVm
++ I All (Qt-subapplication) Geovm
+
 DestroyFunc Mouse-1-Root
 AddToFunc Mouse-1-Root
 +       I       Menu RootMenu Nop
