@@ -7,99 +7,56 @@ SetEnv minDesk 0
 SetEnv maxDesk 1
 DeskTopSize 1x1
 DefaultFont "StringEncoding=utf8:xft:Microsoft YaHei:size=10:encoding=iso10646-1"
-
 HideGeometryWindow
 ColormapFocus FollowsMouse
-
-
 Colorset 1 fg black, bg rgb:9e/ee/ee, sh rgb:9e/ee/ee, hi rgb:9e/ee/ee
 Colorset 2 fg black, bg rgb:55/aa/aa, sh rgb:55/aa/aa, hi rgb:55/aa/aa
 Colorset 3 fg black, bg rgb:e9/ff/e9, sh rgb:88/cc/88, hi rgb:88/cc/88
-
 Style *		BorderWidth 4, !Handles, !Title, !Icon
 Style *		ClickToFocus, ClickToFocusPassesClick,ResizeHintOverride
 Style *		SmartPlacement
 Style * 	BorderColorset 1
 Style * 	HilightBorderColorset 2
 Style "Fvwm*"		Sticky, WindowListSkip, CirculateSkipIcon, CirculateSkip
-#Style "Virtual*"	StaysOnBottom, BorderWidth 0
 Style "Virtual*"	 BorderWidth 0
-
-
-
 MenuStyle * 	Hilight3DOff, PopupDelayed, PopupDelay 160, SeparatorsLong
 MenuStyle * 	ActiveFore white, HilightBack rgb:44/88/44
 MenuStyle * 	MenuColorset 3
 #################################[ 函数定义 ]##############################################
-
-DestroyMenu RootMenu
-AddToMenu RootMenu      "root menu"      Title
-+                       "www"         JumpExec google-chrome
-+                       "urxvt"         JumpExec urxvt
-+                       "evince"         JumpExec evince
-+                       "emacs"         JumpExec emacs
-+                       ""         Nop
-+                       "close window"        Close
-+                       "hide window"         Iconify
-+                       ""         Nop
-+                       "restart fvwm"         Restart 
-+                       "quit fvwm"         Quit
-
-
-
 DestroyFuncGeovm
 AddToFunc Geovm
 + I Raise
 + I FlipFocus
 + I ResizeMove 1024p 810p 0 0-22p         
-
-
-
-DestroyFunc Mouse-1-Root
-AddToFunc Mouse-1-Root
-+       I       Menu RootMenu Nop
-
 DestroyFunc StartFunction
 AddToFunc StartFunction
 + I Exec exec xsetroot -solid grey30
 + I Exec exec xset b off
 + I Exec exec xset s off
 + I Exec exec xset -dpms
-+ I Exec exec urxvt
-
-
++ I JumpExec urxvt
 DestroyFunc JumpExec
 AddToFunc JumpExec
 + I All ($0) WindowListFunc
 + I None ($0) Exec exec $* &
-
 DestroyFunc Move-or-Raise
 AddToFunc Move-or-Raise		M Move
-
 DestroyFunc Resize-or-Raise
 AddToFunc Resize-or-Raise	M Resize
-
-DestroyFunc FuncFvwmConsole
-AddToFunc   FuncFvwmConsole
-+ I Module FvwmConsole -terminal urxvt -geometry 70x13+7+579 $*
-
 DestroyFunc MoveToCurrentDesk
 AddToFunc MoveToCurrentDesk
 + I Iconify off
 + I MoveToDesk 0 $[desk.n]
-
 DestroyFunc WindowListFunc
 AddToFunc WindowListFunc
 + I Raise
 + I FlipFocus
-
 DestroyFunc IconifyWindowList
 AddToFunc   IconifyWindowList
 + I	WindowList Function MoveToCurrentDesk NoNormal NoHotkeys NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum
 #################################[ 鼠标键盘 ]##############################################
 Mouse 1 	W	M	Move-or-Raise
 Mouse 3 	W	M	Resize-or-Raise
-Mouse 1 	R       A       Mouse-1-Root
 Key F1		A	A	JumpExec urxvt
 Key F3		A	A 	FvwmRearrange -cascade -incx -4p  -incy -4p -u  -resize -m  5 5   90 90
 Key F4		A	A 	FvwmRearrange -tile -u -mn 2 -resize -m  1 1 99 99
@@ -132,4 +89,3 @@ Key 1           A       4       Exec exec xclip ~hmy/.pass/root
 Key 2           A       4       Exec exec xclip ~hmy/.pass/google
 Key 3           A       4       Exec exec xclip ~hmy/.pass/p3
 Key 4           A       4       Exec exec xclip ~hmy/.pass/p4
-Key 9           A       4       Exec exec xclip -selection clipboard ~hmy/.pass/p9
