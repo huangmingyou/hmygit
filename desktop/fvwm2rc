@@ -47,17 +47,13 @@ AddToMenu RootMenu      "root menu"      Title
 
 
 
-DestroyFunc Geovm
+DestroyFuncGeovm
 AddToFunc Geovm
 + I Raise
 + I FlipFocus
 + I ResizeMove 1024p 810p 0 0-22p         
 
 
-
-DestroyFunc PlayVm
-AddToFunc PlayVm
-+ I All (Qt-subapplication) Geovm
 
 DestroyFunc Mouse-1-Root
 AddToFunc Mouse-1-Root
@@ -112,7 +108,7 @@ Key F7 		A 	A 	GotoDesk 0 1
 Key F6 		A 	A 	GotoDesk 0 0
 Key F8		A	A	IconifyWindowList
 Key F9		W 	A 	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons  NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L 
-Key F10 	A 	A 	PlayVm
+Key F10 	A 	A 	All (Qt-subapplication) Geovm
 Key F11		W	A	Iconify
 Key F12 	A 	A 	Exec exec slock
 Key t		A	4	Layer 0 8
