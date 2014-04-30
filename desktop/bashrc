@@ -136,3 +136,6 @@ alias luna="lunar -h --utf8 `date "+%Y %m %d %H"`"
 function vset (){
 	vlist|grep $1|awk '{print $NF}'|sed -e 's/}//' -e 's/{//'
 }
+
+alias pa='/opt/polysh-0.4/polysh.py  --hosts-file .dsh/group/all'
+export  HOSTALIASES=~/hosts
