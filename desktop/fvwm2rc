@@ -70,10 +70,17 @@ key e		A	M       JumpExec emacs
 #key g		A	M       JumpExec google-chrome
 key u		A	M       JumpExec urxvt
 Key v           A       M       exec VBoxManage startvm ba2090c6-a8c8-4660-9c77-fc1f409d5c20
+
 Key h 		A 	4       ResizeMove w+3 w w-3 w
 Key j 		A 	4       ResizeMove w w-3 w w+3
 Key k 		A 	4       ResizeMove w w+3 w w-3
 Key l 		A 	4       ResizeMove w-3 w w+3 w
+
+Key d 		A 	4       ResizeMove w+3 w w  w
+Key a 		A 	4       ResizeMove w-3 w w  w
+Key s 		A 	4       ResizeMove w w+3 w w
+Key w 		A 	4       ResizeMove w w-3 w w
+
 Key Up		A 	4 	Move w w-3
 Key Down	A 	4 	Move w w+3
 Key Left	A 	4 	Move w-3 w
