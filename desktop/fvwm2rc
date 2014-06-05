@@ -10,7 +10,6 @@ DefaultFont "StringEncoding=utf8:xft:Microsoft YaHei:size=10:encoding=iso10646-1
 HideGeometryWindow
 ColormapFocus FollowsMouse
 Colorset 1 fg black, bg rgb:9e/ee/ee, sh rgb:9e/ee/ee, hi rgb:9e/ee/ee
-#Colorset 2 fg black, bg rgb:fc/91/6, sh rgb:fc/91/6, hi rgb:fc/91/6
 Colorset 2 fg black, bg rgb:55/aa/aa, sh rgb:55/aa/aa, hi rgb:55/aa/aa
 Colorset 3 fg black, bg rgb:e9/ff/e9, sh rgb:88/cc/88, hi rgb:88/cc/88
 Style *		BorderWidth 4, !Handles, !Title, !Icon
@@ -26,7 +25,6 @@ MenuStyle * 	MenuColorset 3
 #################################[ 函数定义 ]##############################################
 DestroyFunc StartFunction
 AddToFunc StartFunction
-#+ I Exec exec xsetroot -solid grey30
 + I Exec exec xsetroot -solid black
 + I Exec exec xset b off
 + I Exec exec xset s off
@@ -90,7 +88,3 @@ Key 2           A       4       Exec exec xclip ~hmy/.pass/google
 Key 3           A       4       Exec exec xclip ~hmy/.pass/p3
 Key 4           A       4       Exec exec xclip ~hmy/.pass/p4
 Key 5           A       4       Exec exec xclip ~hmy/.pass/p5
-
-
-
-
