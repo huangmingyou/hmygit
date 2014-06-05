@@ -29,17 +29,10 @@ AddToFunc StartFunction
 + I Exec exec xset b off
 + I Exec exec xset s off
 + I Exec exec xset -dpms
-
 DestroyFunc JumpExec
 AddToFunc JumpExec
 + I All ($0) WindowListFunc
-+ I None ($0) Exec exec $* &
-
-DestroyFunc JumpGo
-AddToFunc JumpGo
-+ I All (*Google*) WindowListFunc
-+ I None (*Google*) Exec exec google-chrome &
-
++ I None ($0) Exec exec $1 &
 DestroyFunc Move-or-Raise
 AddToFunc Move-or-Raise		M Move
 DestroyFunc Resize-or-Raise
@@ -58,8 +51,8 @@ AddToFunc   IconifyWindowList
 #################################[ 鼠标键盘 ]##############################################
 Mouse 1 	W	M	Move-or-Raise
 Mouse 3 	W	M	Resize-or-Raise
-Key F1		A	A	JumpExec urxvt
-Key F2		A	A	JumpGo
+Key F1		A	A	JumpExec urxvt urxvt
+Key F2		A	A	JumpExec *Google* google-chrome
 Key F3		A	A 	FvwmRearrange -cascade -incx -4p  -incy -4p -u  -resize -m  2 2 96 96
 Key F4		A	A 	FvwmRearrange -tile -u -mn 2 -resize -m  1 1 99 99
 Key F4		A 	M 	Close
