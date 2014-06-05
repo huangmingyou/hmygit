@@ -55,9 +55,6 @@ Mouse 1 	W	M	Move-or-Raise
 Mouse 3 	W	M	Resize-or-Raise
 Key F1		A	A	JumpExec urxvt
 Key F2		W 	A 	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons  NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L 
-#Key F2		A	A	JumpExec google-chrome
-#Key F3		A	A 	FvwmRearrange -cascade -incx 5  -incy -4p -u  -resize -m  2 2 80 95
-#Key F3		A	A 	FvwmRearrange -cascade -incx -4p  -incy -4p -u  -resize -m  0 0 1912p 1072p
 Key F3		A	A 	FvwmRearrange -cascade -incx -4p  -incy -4p -u  -resize -m  2 2 96 96
 Key F4		A	A 	FvwmRearrange -tile -u -mn 2 -resize -m  1 1 99 99
 Key F4		A 	M 	Close
@@ -71,7 +68,6 @@ Key t		A	4	Layer 0 8
 Key r           A       4       Restart fvwm2
 Key b		A	4	Layer 0 4
 Key v           A       M       exec VBoxManage startvm ba2090c6-a8c8-4660-9c77-fc1f409d5c20
-
 Key o 		A 	M       WindowList Root c c CurrentAtEnd CurrentDesk NoIcons  NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L 
 Key u 		A 	M       JumpExec urxvt
 key g		A	M	JumpExec  google-chrome
@@ -79,12 +75,10 @@ Key h 		A 	4       ResizeMove w+3 w w-3 w
 Key j 		A 	4       ResizeMove w w-3 w w+3
 Key k 		A 	4       ResizeMove w w+3 w w-3
 Key l 		A 	4       ResizeMove w-3 w w+3 w
-
 Key d 		A 	4       ResizeMove w+3 w w  w
 Key a 		A 	4       ResizeMove w-3 w w  w
 Key s 		A 	4       ResizeMove w w+3 w w
 Key w 		A 	4       ResizeMove w w-3 w w
-
 Key Up		A 	4 	Move w w-3
 Key Down	A 	4 	Move w w+3
 Key Left	A 	4 	Move w-3 w
@@ -96,6 +90,7 @@ Key 2           A       4       Exec exec xclip ~hmy/.pass/google
 Key 3           A       4       Exec exec xclip ~hmy/.pass/p3
 Key 4           A       4       Exec exec xclip ~hmy/.pass/p4
 Key 5           A       4       Exec exec xclip ~hmy/.pass/p5
+
 
 
 
