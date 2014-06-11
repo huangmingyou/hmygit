@@ -33,6 +33,9 @@ DestroyFunc WindowListFunc
 AddToFunc WindowListFunc
 + I Raise
 + I FlipFocus
+DestroyFunc JumpTo
+AddToFunc JumpTo
++ I All ($0) WindowListFunc
 DestroyFunc JumpExec
 AddToFunc JumpExec
 + I All ($0) WindowListFunc
@@ -50,7 +53,8 @@ Mouse 1 	W	M	Move-or-Raise
 Mouse 3 	W	M	Resize-or-Raise
 Key F1		A	A	JumpExec urxvt urxvt
 Key F2		A	A	JumpExec *Google* google-chrome
-Key F3		A	A 	FvwmRearrange -cascade -incx -4p  -incy -4p -u  -resize -m  2 2 96 96
+Key F3		A	A 	JumpTo *Virtual*
+#Key F3		A	A 	FvwmRearrange -cascade -incx -4p  -incy -4p -u  -resize -m  2 2 96 96
 Key F4		A	A 	FvwmRearrange -tile -u -mn 2 -resize -m  1 1 99 99
 Key F4		A 	M 	Close
 Key F7 		A 	A 	GotoDesk 0 1
