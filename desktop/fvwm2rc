@@ -9,6 +9,7 @@ DeskTopSize 1x1
 DefaultFont "StringEncoding=utf8:xft:Microsoft YaHei:size=10:encoding=iso10646-1"
 HideGeometryWindow
 ColormapFocus FollowsMouse
+#Colorset 1 fg black, bg rgb:00/00/00, sh rgb:00/00/00, hi rgb:00/00/00
 Colorset 1 fg black, bg rgb:9e/ee/ee, sh rgb:9e/ee/ee, hi rgb:9e/ee/ee
 Colorset 2 fg black, bg rgb:55/aa/aa, sh rgb:55/aa/aa, hi rgb:55/aa/aa
 Colorset 3 fg black, bg rgb:e9/ff/e9, sh rgb:88/cc/88, hi rgb:88/cc/88
@@ -29,6 +30,8 @@ AddToFunc StartFunction
 + I Exec exec xset b off
 + I Exec exec xset s off
 + I Exec exec xset -dpms
++ I JumpExec urxvt urxvt
++ I JumpExec *Google* google-chrome
 DestroyFunc WindowListFunc
 AddToFunc WindowListFunc
 + I Raise
@@ -53,8 +56,9 @@ Mouse 1 	W	M	Move-or-Raise
 Mouse 3 	W	M	Resize-or-Raise
 Key F1		A	A	JumpExec urxvt urxvt
 Key F2		A	A	JumpExec *Google* google-chrome
-Key F3		A	A 	JumpTo *Virtual*
-#Key F3		A	A 	FvwmRearrange -cascade -incx -4p  -incy -4p -u  -resize -m  2 2 96 96
+#Key F3		A	A 	JumpTo *Virtual*
+#Key F3		A	A 	Module FvwmScript "/home/hmy/.fvwm/jumpwindow"
+Key F3		A	A 	FvwmRearrange -cascade -incx 100p  -incy -4p -u  -resize -m  1 1 92 98
 Key F4		A	A 	FvwmRearrange -tile -u -mn 2 -resize -m  1 1 99 99
 Key F4		A 	M 	Close
 Key F7 		A 	A 	GotoDesk 0 1
@@ -65,6 +69,7 @@ Key F10 	A 	A 	ResizeMove 1024p 810p 0 0-22p
 Key F11		W	A	Iconify
 Key F12 	A 	A 	Exec exec slock
 Key t		A	4	Layer 0 8
+#Key r           A       4       Module FvwmScript "/home/hmy/.fvwm/jumpwindow"
 Key r           A       4       Restart fvwm2
 Key b		A	4	Layer 0 4
 Key v           A       M       exec VBoxManage startvm ba2090c6-a8c8-4660-9c77-fc1f409d5c20
@@ -79,10 +84,12 @@ Key d 		A 	4       ResizeMove w+3 w w  w
 Key a 		A 	4       ResizeMove w-3 w w  w
 Key s 		A 	4       ResizeMove w w+3 w w
 Key w 		A 	4       ResizeMove w w-3 w w
+
 Key Up		A 	4 	Move w w-3
 Key Down	A 	4 	Move w w+3
 Key Left	A 	4 	Move w-3 w
 Key Right	A 	4 	Move w+3 w
+
 Key Return 	A 	M 	Maximize
 Key Tab		A	M	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons	NoGeometry NoCurrentDeskTitle NoNumInDeskTitle NoDeskNum SelectOnRelease Meta_L Layer 4
 Key 1           A       4       Exec exec xclip ~hmy/.pass/root
@@ -90,3 +97,8 @@ Key 2           A       4       Exec exec xclip ~hmy/.pass/google
 Key 3           A       4       Exec exec xclip ~hmy/.pass/p3
 Key 4           A       4       Exec exec xclip ~hmy/.pass/p4
 Key 5           A       4       Exec exec xclip ~hmy/.pass/p5
+
+Key Up		A 	M 	ResizeMove 960p 50 -0 0
+Key Down	A 	M 	ResizeMove 960p 50 -0 -0
+Key Left	A 	M 	ResizeMove 960p 50 1024p 0
+Key Right	A 	M 	ResizeMove 960p 50 1024p -0
