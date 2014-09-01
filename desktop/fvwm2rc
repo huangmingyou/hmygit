@@ -55,7 +55,9 @@ Mouse 1 	W	M	Move-or-Raise
 Mouse 3 	W	M	Resize-or-Raise
 Key F1		A	A	JumpExec urxvt urxvt
 Key F2		A	A	JumpExec *Google* google-chrome
-Key F3		A	A 	FvwmRearrange -cascade -incx 60p  -incy 60p -u  -resize -m  1 1 85 85
+#Key F9		A	A 	FvwmRearrange -cascade -incx -2p  -incy -2p -u  -resize -m  1 1 98 98
+#Key F3		A	A 	FvwmRearrange -cascade -incx 60p  -incy 60p -u  -resize -m  1 1 85 85
+Key F3		A	A 	JumpExec *Vir* urxvt
 Key F4		A	A 	FvwmRearrange -tile -u -mn 2 -resize -m  1 1 99 99
 Key F4		A 	M 	Close
 
