@@ -10,15 +10,16 @@ DefaultFont "StringEncoding=utf8:xft:Microsoft YaHei:size=10:encoding=iso10646-1
 HideGeometryWindow
 ColormapFocus FollowsMouse
 Colorset 1 fg black, bg rgb:9e/ee/ee, sh rgb:9e/ee/ee, hi rgb:9e/ee/ee
+#Colorset 1 fg black, bg rgb:00/00/00, sh rgb:00/00/00, hi rgb:00/00/00
 Colorset 2 fg black, bg rgb:55/aa/aa, sh rgb:55/aa/aa, hi rgb:55/aa/aa
 Colorset 3 fg black, bg rgb:e9/ff/e9, sh rgb:88/cc/88, hi rgb:88/cc/88
-Style *		BorderWidth 2, !Handles, !Title, !Icon
+Style *		BorderWidth 0, !Handles, !Title, !Icon
 Style *		ClickToFocus, ClickToFocusPassesClick,ResizeHintOverride
 Style *		SmartPlacement
 Style * 	BorderColorset 1
 Style * 	HilightBorderColorset 2
 Style "Fvwm*"		Sticky, WindowListSkip, CirculateSkipIcon, CirculateSkip
-Style "Virt*"		BorderWidth 0
+#Style "Virt*"		BorderWidth 0
 MenuStyle * 	Hilight3DOff, PopupDelayed, PopupDelay 160, SeparatorsLong
 MenuStyle * 	ActiveFore white, HilightBack rgb:44/88/44
 MenuStyle * 	MenuColorset 3
@@ -94,3 +95,5 @@ Key Tab		A	M	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons	NoGeometry NoC
 Key 1           A       4       Exec exec xclip ~hmy/.pass/root
 Key 2           A       4       Exec exec xclip ~hmy/.pass/google
 Key 3           A       4       Exec exec xclip ~hmy/.pass/dns
+Key 4           A       4       Exec exec xclip ~hmy/.ssh/201409/linux.pub
+Key 5           A       4       Exec exec xclip ~/hmy/.pass/p5
