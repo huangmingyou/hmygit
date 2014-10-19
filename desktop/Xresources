@@ -33,7 +33,7 @@ URxvt.color15:gray85
 
 
 Rxvt.saveLines:10000
-Rxvt.geometry: 165x57+1318-54
+Rxvt.geometry: 173x59+348+133
 !
 !
 Rxvt.preeditType: Root
