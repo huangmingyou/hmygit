@@ -2,7 +2,7 @@ $HOMEDIR="/home/hmy"
 $CODEDIR="/home/hmy/github/hmygit/desktop"
 
 package {
-	["keynav","fvwm","xfonts-terminus","xfonts-wqy","tmux","rxvt-unicode","fcitx-googlepinyin","ecryptfs-utils","p7zip-full","git-core"]:
+	["keynav","fvwm","xfonts-terminus","xfonts-wqy","tmux","rxvt-unicode","fcitx-googlepinyin","ecryptfs-utils","p7zip-full","git-core","dmz-cursor-theme","gnupg-agent"]:
 	ensure => installed;
 }
 
