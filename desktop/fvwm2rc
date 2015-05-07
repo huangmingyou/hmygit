@@ -10,14 +10,24 @@ DefaultFont "StringEncoding=utf8:xft:Microsoft YaHei:size=10:encoding=iso10646-1
 HideGeometryWindow
 ColormapFocus FollowsMouse
 #Colorset 1 fg black, bg rgb:9e/e/ee, sh rgb:9e/ee/ee, hi rgb:9e/ee/ee
-Colorset 1 fg black, bg rgb:00/00/00, sh rgb:00/00/00, hi rgb:00/00/00
-Colorset 2 fg black, bg rgb:55/aa/aa, sh rgb:55/aa/aa, hi rgb:55/aa/aa
+################################[ 颜色 ]#############################
+Colorset 1 fg black, bg rgb:66/66/66, sh rgb:6f/66/66, hi rgb:66/66/66
+Colorset 2 fg black, bg rgb:ff/24/00, sh rgb:ff/24/00, hi rgb:ff/24/00
 Colorset 3 fg black, bg rgb:e9/ff/e9, sh rgb:88/cc/88, hi rgb:88/cc/88
+# 桔红
+Colorset 4 fg black, bg rgb:ff/24/00, sh rgb:ff/24/00, hi rgb:ff/24/00
+# 深绿
+Colorset 5 fg black, bg rgb:55/aa/aa, sh rgb:55/aa/aa, hi rgb:55/aa/aa
+# 桔黄
+Colorset 6 fg black, bg rgb:e4/78/33, sh rgb:e4/78/33, hi rgb:e4/78/33
+######################################################################
+######################################################################
 Style *		BorderWidth 2, !Handles, !Title, !Icon
 Style *		ClickToFocus, ClickToFocusPassesClick,ResizeHintOverride
 Style *		SmartPlacement
 Style * 	BorderColorset 1
-Style * 	HilightBorderColorset 2
+# 活动窗口颜色
+Style * 	HilightBorderColorset 5
 Style "Fvwm*"		Sticky, WindowListSkip, CirculateSkipIcon, CirculateSkip
 Style "Virt*"		BorderWidth 0
 MenuStyle * 	Hilight3DOff, PopupDelayed, PopupDelay 160, SeparatorsLong
@@ -26,7 +36,8 @@ MenuStyle * 	MenuColorset 3
 #################################[ 函数定义 ]##############################################
 DestroyFunc StartFunction
 AddToFunc StartFunction
-+ I Exec exec xsetroot -solid black
++ I Exec exec fvwm-root /home/hmy/.fvwm/y3.png
+#+ I Exec exec xsetroot -solid black
 + I Exec exec xset b off
 + I Exec exec xset s off
 + I Exec exec xset -dpms
@@ -51,6 +62,11 @@ DestroyFunc MoveToCurrentDesk
 AddToFunc MoveToCurrentDesk
 + I Iconify off
 + I MoveToDesk 0 $[desk.n]
+
+DestroyFunc lockx
+AddToFunc lockx
++ I GotoDesk 0 1
++ I Exec exec  slock
 #################################[ 鼠标键盘 ]##############################################
 Mouse 1 	W	M	Move-or-Raise
 Mouse 3 	W	M	Resize-or-Raise
@@ -71,7 +87,7 @@ Key F9		W 	A 	WindowList Root c c CurrentAtEnd CurrentDesk NoIcons  NoGeometry N
 #Key F10 	A 	A 	ResizeMove 1024p 942p 0 0-22p
 Key F10 	A 	A 	ResizeMove 1024p 810p 0 0-22p
 Key F11		W	A	Iconify
-Key F12 	A 	A 	Exec exec slock
+Key F12 	A 	A 	lockx
 
 Key t		A	4	Layer 0 8
 Key b		A	4	Layer 0 4
@@ -100,3 +116,7 @@ Key 3           A       4       Exec exec xclip ~hmy/.pass/dns
 Key 4           A       4       Exec exec xclip ~hmy/.pass/p4
 Key 5           A       4       Exec exec xclip ~hmy/.pass/p5
 Key 6           A       4       Exec exec xclip ~hmy/.pass/p6
+Key 7           A       4       Exec exec xclip ~hmy/.pass/p7
+Key 8           A       4       Exec exec xclip ~hmy/.pass/p8
+Key 9           A       4       Exec exec xclip ~hmy/.pass/p9
+Key 0           A       4       Exec exec xclip ~hmy/.pass/p0
